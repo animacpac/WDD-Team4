@@ -8,22 +8,22 @@ function convertToJson(res) {
   }
 }
 
-export default class ProductData  {
-    constructor(category) {
-      this.category = category;
-      
-    }
-    getData(category) {
-      return fetch(baseURL + `products/search/${category}`)
-      .then(convertToJson).then((data) => data.Result);
-      
-    }
-    async findProductById(id) {
-        const products = await this.getData()
-        return products.find((item) => item.Id === id);
-    }
+export default class ProductData {
+  constructor() {
+    // this.category = category;
+
   }
+  getData(category) {
+    return fetch(baseURL + `products/search/${category}`)
+      .then(convertToJson).then((data) => data.Result);
+
+  }
+  async findProductById(id) {
+    return await fetch(baseURL + `product/${id}`).then(convertToJson)
+      .then((data) => data.Result);
+  }
+}
 
 
-const product = products.find((item) => item.Id === e.target.dataset.id);
+// const product = products.find((item) => item.Id === e.target.dataset.id);
 
