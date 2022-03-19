@@ -1,1 +1,3 @@
-import ProductData from './productData.js';
+import { loadHeaderFooter } from "./utils.js";
+
+loadHeaderFooter();
